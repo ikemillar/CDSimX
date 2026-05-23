@@ -1,0 +1,60 @@
+template:
+bootstrap: 5
+
+url: https://ikemillar.github.io/CDSimX/
+
+home:
+title: "CDSimX"
+description: "Advanced Climate Simulation and Forecasting Toolkit"
+
+navbar:
+structure:
+left:
+- reference
+- news
+
+reference:
+
+- title: "Core Simulation"
+  contents:
+
+  - create_stations
+  - generate_time_index
+  - simulate_climate
+  - apply_physical_constraints
+  - bias_correction
+  - validate_climate
+
+- title: "Climate Variable Simulation"
+  contents:
+
+  - simulate_temperature
+  - simulate_rainfall
+  - simulate_rh
+  - simulate_wind_speed
+  - simulate_wind_direction
+  - simulate_solar_radiation
+  - simulate_evapotranspiration
+  - simulate_dewpoint
+
+- title: "Dependence Modelling"
+  contents:
+
+  - copula_dependence
+
+- title: "Forecasting"
+  contents:
+
+  - forecasting_ml
+
+- title: "Visualization"
+  contents:
+
+  - plot_station_timeseries
+  - visualization
+
+- title: "Export"
+  contents:
+
+  - export_csv
+  - export_netcdf
