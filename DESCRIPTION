@@ -1,0 +1,41 @@
+Package: CDSimX
+Type: Package
+Title: Simulating Climate Data for Research and Modelling
+Version: 1.1.0
+Date: 2026-04-19
+Authors@R: 
+    c(
+    person("Isaac", "Osei", role = c("aut", "cre"), email = "ikemillar65@gmail.com"),
+    person("Acheampong", "Baafi-Adomako", role = "aut", email = "acheampongbaafi1@gmail.com"),
+    person("Jayanti", "Maji", role = "aut", email = "")
+    )
+Maintainer: Isaac Osei <ikemillar65@gmail.com>
+Description: Advanced climate simulation, forecasting,
+    visualization, export, and machine learning tools.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    copula,
+    ggplot2,
+    dplyr,
+    tidyr,
+    lubridate,
+    randomForest,
+    gbm,
+    forecast,
+    xgboost,
+    nnet,
+    ncdf4,
+    rlang,
+    readr,
+    scales,
+    stats
+Suggests:
+    testthat (>= 3.0.0)
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Config/testthat/edition: 3
+URL: https://github.com/ikemillar/CDSimX
+BugReports: https://github.com/ikemillar/CDSimX/issues
+
