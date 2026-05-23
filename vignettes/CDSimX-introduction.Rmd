@@ -1,0 +1,230 @@
+---
+title: "CDSimX-introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{CDSimX-introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.width = 8,
+  fig.height = 4,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(CDSimX)
+```
+
+<h2 style="font-size:160%; font-weight:bold;"> Introduction </h2>
+
+The CDSimX package provides an advanced framework for climate simulation,
+forecasting, visualization, validation, and climate data export in R.
+
+The package supports:
+
+- synthetic weather station generation
+
+- stochastic climate simulation
+
+- machine learning forecasting
+
+- climate validation
+
+- NetCDF and CSV export
+
+- visualization of climate variables
+
+- climate dependence modelling
+
+CDSimX is useful for:
+
+- climate research
+
+- hydrological modelling
+
+- machine learning experiments
+
+- educational demonstrations
+
+- sensitivity analysis
+
+- simulation studies
+
+<h2 style="font-size:160%; font-weight:bold;"> Creating Weather Stations </h2>
+The stations can be created either by: loading from a CSV file, accepting an existing data frame, or auto-generating synthetic stations in a bounding box. We begin by generating synthetic climate stations.
+```{r}
+stations <- create_stations(
+  n = 3,
+  seed = 123
+)
+stations
+```
+Each station contains:
+
+- station identifier
+
+- longitude
+
+- latitude
+
+- elevation (if available)
+
+<h2 style="font-size:160%; font-weight:bold;"> Generating Time Indices </h2>
+
+CDSimX supports daily, monthly, and yearly temporal resolutions.
+```{r}
+time_index <- generate_time_index(
+  start_date = "2019-01-01",
+  end_date = "2024-12-31",
+  frequency = "day"
+)
+head(time_index)
+```
+<h2 style="font-size:160%; font-weight:bold;"> Simulating Climate Data </h2>
+
+Climate variables can now be simulated using the generated stations and
+time index.
+```{r}
+climate <- simulate_climate(
+  stations = stations,
+  time_index = time_index,
+  seed = 123
+)
+
+head(climate)
+```
+The simulated dataset may include:
+
+- Tmin
+
+- Tmax
+
+- Rainfall
+
+- RH
+
+- WindSpeed
+
+- Solar_Radiation
+
+- ET0
+
+- DewPoint
+
+<h2 style="font-size:160%; font-weight:bold;"> Climate Visualization </h2>
+
+CDSimX includes customizable visualization functions.
+```{r}
+plot_station_timeseries(
+  climate,
+  station = "Station_1",
+  var = "Tmax"
+)
+```
+Users may customize:
+
+- colors
+
+- themes
+
+- smoothing
+
+- labels
+
+- seasonal highlighting
+
+<h2 style="font-size:160%; font-weight:bold;"> Machine Learning Forecasting </h2>
+
+CDSimX supports several machine learning forecasting approaches.
+
+Available methods include:
+
+- Random Forest
+
+- Linear Regression
+
+- GBM
+
+- ARIMA
+
+- XGBoost
+
+- Neural Networks
+
+```{r}
+forecast_result <- forecasting_ml(
+  climate_data = climate,
+  target = "Rainfall",
+  forecast_horizon = 12,
+  method = "rf"
+)
+forecast_result$model_performance
+```
+Forecasted values:
+```{r}
+head(forecast_result$forecast_data)
+```
+
+<h2 style="font-size:160%; font-weight:bold;"> Climate Validation </h2>
+
+CDSimX includes climate validation tools for checking realism and
+statistical consistency.
+```{r}
+validation <- validate_climate(climate)
+validation
+```
+Validation diagnostics may include:
+
+- physical constraint checks
+
+- variability assessment
+
+- correlations
+
+- temporal consistency
+
+- distributional diagnostics
+
+<h2 style="font-size:160%; font-weight:bold;"> Exporting Climate Data </h2>
+
+<h4 style="font-size:160%; font-weight:bold;"> Export to CSV </h4>
+
+```{r}
+export_csv(
+  climate,
+  file = "simulated_climate.csv"
+)
+```
+
+<h4 style="font-size:160%; font-weight:bold;"> Export to NetCDF </h4>
+```{r}
+export_netcdf(
+  climate,
+  file = "simulated_climate.nc"
+)
+```
+
+These formats support interoperability with:
+
+- ncdf4
+
+- terra
+
+- stars
+
+- xarray
+
+- climate modelling workflows
+
+<h2 style="font-size:160%; font-weight:bold;"> Conclusion </h2>
+
+CDSimX provides a modern climate simulation ecosystem for generating,
+forecasting, validating, visualizing, and exporting synthetic climate data.
+
+The package is designed to support reproducible climate science,
+machine learning applications, and environmental modelling workflows.
